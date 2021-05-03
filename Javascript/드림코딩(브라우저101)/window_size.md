@@ -8,4 +8,48 @@
 
 → 개발툴 환경의 console에서 window등의 객체를 출력해보면서 익숙해질것.
 
-<img width="1244" alt="Window_size" src="https://user-images.githubusercontent.com/58588011/116892641-fdd46c80-ac6a-11eb-9214-d7e3c1d0b8c7.png">
+```js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="gangpyo">
+    <meta name="description" content="Window_size-project ">
+
+    
+    
+    <style>
+        .tag {
+  font-size: 100px;
+  display : inline-block;
+  background: purple;
+}
+    </style>
+    
+</head>
+<body>
+    <div class="tag">windowSize</div>
+
+
+    <script>
+        function updateTag () {
+            tag.innerHTML = `
+            Window.screen: ${window.screen.width}, ${window.screen.height} </br>
+            Window.outer : ${window.outerWidth}, ${window.outerHeight}</br>
+            window.inner : ${window.innerWidth}, ${window.innerHeight}</br>
+            documentElement.client : ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}
+            `;
+        }
+        const tag = document.querySelector('.tag');
+        window.addEventListener('resize',() => {
+            updateTag();
+            
+        });
+
+    </script>
+</body>
+</html>
+```
+
