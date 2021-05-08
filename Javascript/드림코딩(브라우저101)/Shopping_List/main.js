@@ -36,4 +36,4 @@ input.addEventListener('change',(e) => {
     })
     i++;
     input.value = "";
-})
+}) 
