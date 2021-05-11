@@ -7,6 +7,7 @@ body {
   margin: 0;
 }
 .body-container {
+  position: relative;
   width: 1200px;
   height: 1000px;
   background: url('img/background.png') center/cover no-repeat;
@@ -16,6 +17,10 @@ body {
 
 .section {
   height: 50%;
+}
+
+.game-field {
+  position: relative;
 }
 
 .control {
@@ -50,7 +55,7 @@ body {
   text-align: center;
 }
 
-.control__carrot-num {
+.control__score {
   font-size: 70px;
   background: orange;
   border-radius: 50%;
@@ -60,4 +65,42 @@ body {
   color: white;
   height: 100px;
   line-height: 90px;
+}
+
+.carrot,
+.bug {
+  position: absolute;
+  cursor: pointer;
+}
+
+.carrot:hover {
+  transform: scale(1.2);
+}
+
+.Pop-up {
+  padding: 40px;
+  width: 450px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+}
+
+.Pop-up__btn {
+  cursor: pointer;
+  color: black;
+  background: #f2d5a4;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
 }
