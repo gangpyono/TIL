@@ -32,9 +32,10 @@
 
 
 # 2. 웹 APIs를 통해 등록한 콜백함수는 어떻게 동작하는가?
+ <img width="700" alt="자바스크립트 런타임 환경" src="https://user-images.githubusercontent.com/58588011/118661257-ea5c0080-b829-11eb-84ed-d9a31845fb31.png">
+ 
  - 웹 APIs : fetch, event Listener, setTimeout...
  - js 런타임환경.
- <img width="700" alt="자바스크립트 런타임 환경" src="https://user-images.githubusercontent.com/58588011/118661257-ea5c0080-b829-11eb-84ed-d9a31845fb31.png">
  - 위의 API들을 통해 콜백함수를등록하게되면 각 api마다 콜백함수를 해당 큐에 등록을하게된다.
  - 항상 call stack, task Queue, microtask Queue, Render 을 주시하는 evnet Loop를 통해 콜스택이 비어있을시 콜백함수를 가져와 실행시킨다.
  
