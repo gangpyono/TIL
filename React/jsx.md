@@ -1,5 +1,6 @@
 # 1.JSX정리(HTML과 차이점).
 
+- 아래 함수내용중 return 내용이 jsx에 해당.
 - 자바스크립트코드 위에서 HTML처럼사용가능.
 - html의 class속성부여시 jsx에서는 className로 부여.
 - html은 마크업언어, jsx는 자바스크립트.
