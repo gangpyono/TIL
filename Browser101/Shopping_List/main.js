@@ -4,7 +4,7 @@ const plus = document.querySelector('.plus');
 
 
 let i = 0;
-input.addEventListener('change',(e) => {
+input.addEventListener('change',(e) => {     //change 이벤트는 input요소가 포커스를 잃으면 발생..
     const target = e.target;
     let value = target.value;
     
