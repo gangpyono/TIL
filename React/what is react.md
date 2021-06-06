@@ -16,7 +16,7 @@
   - 데이터를 가지고있는 state 오브젝트 존재.
   - 사용자에게 어떻게 보여질지 정의하는 render함수 존재.
   - state가 변화할떄마다 render함수가 호출.
-  - 계속 render 함수가 호출이되어도 성능이 괜찮은 이유은, 리액트 내부에 가사의 VDOM이 존재하기 떄문.
+  - 계속 render 함수가 호출이되어도 성능이 괜찮은 이유은, 리액트 내부에 가상의 VDOM이 존재하기 떄문.
   <img width="700" alt="클래스컴포넌트" src="https://user-images.githubusercontent.com/58588011/119258588-4bf2e500-bc05-11eb-85c0-4cc66fb2dce0.png">
 
   ### ii) 함수
