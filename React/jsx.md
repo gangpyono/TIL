@@ -2,7 +2,6 @@
 
 - 아래 함수내용중 return 내용이 jsx에 해당.
 - 자바스크립트코드 위에서 HTML처럼사용가능.
-- html의 class속성부여시 jsx에서는 className로 부여.
 - html은 마크업언어, jsx는 자바스크립트.
 - 이후 바벨(Babel)을 통해 HTML 과 자바스크립트로 변환됨.
 
