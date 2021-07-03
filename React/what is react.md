@@ -11,16 +11,22 @@
 - 한가지 기능을 수행하는 UI단위 (ex - 버튼한개)
 - 클래스 or 함수를통해 만들수 있다.
 
-  ### i) 클래스
-  - 리액트에서 제공하는 컴포넌트 클래스를 상속해서 만들 수있음.  
+  ### i) 클래스 
+  <img width="700" alt="클래스컴포넌트" src="https://user-images.githubusercontent.com/58588011/119258588-4bf2e500-bc05-11eb-85c0-4cc66fb2dce0.png">
+  </br>
+  
+  - 리액트에서 제공하는 컴포넌트 클래스를 상속해서 만들 수있음. 
   - 내 컴포넌트가 상태가존재하고 그 상태에따라 업데이트가 필요하다면 class컴포넌트 사용.
   - 데이터를 가지고있는 state 오브젝트 존재.
   - 사용자에게 어떻게 보여질지 정의하는 render함수 존재.
   - state가 변화할떄마다 render함수가 호출.
-  - 계속 render 함수가 호출이되어도 성능이 괜찮은 이유은, 리액트 내부에 가상의 VDOM이 존재하기 떄문.
-  <img width="700" alt="클래스컴포넌트" src="https://user-images.githubusercontent.com/58588011/119258588-4bf2e500-bc05-11eb-85c0-4cc66fb2dce0.png">
-
+  - 최상위 컴포넌트안에서 state가변경되어 redner함수가 호출될시 만약 자식컴포넌트가 render함수내에 존재한다면 그들의 redner함수도 다시호출되어 사용자에게 업데이트된 내용이 보여진다.
+  - 계속 render함수가 호출이되어도 성능이 괜찮은 이유은, 리액트 내부에 가상의 VDOM이 존재하기 떄문.
+  
   ### ii) 함수
+  <img width="292" alt="함수 컴포넌트" src="https://user-images.githubusercontent.com/58588011/120090674-4d5d6980-c13f-11eb-88b9-324e7bad4ed2.png">
+  </br>
+  
   - 아래 이미지의 예로 App이라는 컴포넌트
   - 내 컴포넌트에 상태가 없고 항상 정적으로 데이터가 표기된다면 함수 컴포넌트 사용.
   - 스테이트와 라이프사이클 메소드가 없음.
@@ -30,15 +36,15 @@
     → 클래스가 다루기어렵기떄문.
 
     but 최근에 도입된 부분이기떄문에 클래스 컴포넌트로 만들어진경우가 많고,사용에있어 팀마다 호불호가 갈림.
-    <img width="292" alt="함수 컴포넌트" src="https://user-images.githubusercontent.com/58588011/120090674-4d5d6980-c13f-11eb-88b9-324e7bad4ed2.png">
+    
 
 
-  #### 라이프사이클메소드 
+  ### iii) 라이프사이클메소드 
    - 컴포넌트가 사용자에게 보여질떄, 돔트리에 올라갔을때, 돔트리에서 나왔을때, 컴포넌트가 업데이트되었을때
      등등 컴포넌트의 상태에 따라서 우리가 함수를 구현에 놓으면 리액트가 알아서 불러주는 라이프사이클 메소드가 있다. 
    
    
-   ###  클래스 vs 함수
+   ### iv) 클래스 vs 함수
    
    
     <img width="700" alt="class vs function" src="https://user-images.githubusercontent.com/58588011/119259146-d1779480-bc07-11eb-9edc-c5e00a37be52.png">
