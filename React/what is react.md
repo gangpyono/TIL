@@ -2,12 +2,13 @@
 # 1.리액트란
 - 웹 UI를 만드는 라이브러리.
 - 리액트는 컴포넌트들로 구성되어있다.
+- 돔트리와같이 트리형식으로 구성된다. (최상위 트리(root)가 App컴포넌트.)
+<img width="1613" alt="스크린샷 2021-07-03 오후 10 00 08" src="https://user-images.githubusercontent.com/58588011/124355012-0be24180-dc4a-11eb-83c2-a62063436b83.png">
+  
 <img width="697" alt="Recat란" src="https://user-images.githubusercontent.com/58588011/119258310-15689a80-bc04-11eb-9535-034fba23a3da.png">
 
 ## 1) 컴포넌트
 - 한가지 기능을 수행하는 UI단위 (ex - 버튼한개)
-- 돔트리와같이 트리형식으로 구성된다.
-  → 최상위 트리가 App컴포넌트.
 - 클래스 or 함수를통해 만들수 있다.
 
   ### i) 클래스
