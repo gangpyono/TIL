@@ -12,3 +12,9 @@ inflearn
 
 ## section 3 
 - 문자열 탐색
+
+## section 4
+- 완전탐색
+
+## section 5
+- 효율성( 투포인터 알고리즘, 슬라이딩 윈도우, 해쉬)
