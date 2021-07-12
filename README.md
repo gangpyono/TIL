@@ -1,5 +1,5 @@
-# Algorithm_JS
-inflearn
+# Algorithm_JS(inflearn)
+
 
 
 ## section 1
