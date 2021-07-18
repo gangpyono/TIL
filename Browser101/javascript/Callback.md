@@ -79,11 +79,6 @@ userStorage.loginUser(
   }
 );
 
-function onSuccess(id) {
-  userStorage.getRoles(id, onSuccess, onError);
-}
 
-function onError(error) {}
- //가독성이 떨어진다.
   </script>
 ```
