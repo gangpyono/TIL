@@ -1,2 +1,1 @@
-# TIL
-Today I Learned
+# 드림코딩엘리 강의내용 정리
