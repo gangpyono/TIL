@@ -56,4 +56,4 @@
    ### iv) 클래스 vs 함수
    
    
-    <img width="700" alt="class vs function" src="https://user-images.githubusercontent.com/58588011/119259146-d1779480-bc07-11eb-9edc-c5e00a37be52.png">
+    <img width="700" alt="class vs function" src="https://user-images.githubusercontent.com/58588011/119259146-d1779480-bc07-11eb-9edc-c5e00a37be52.png"> 
