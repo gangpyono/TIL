@@ -47,19 +47,19 @@
   - 자료구조중 하나.(FIFO: first in first out)
  
 <br/><br/>
-    #### 1). task Queue 
+   #### 1). task Queue 
 
-    - setTimeOut , event Listener, fetch 등에 등록된 콜백함수가 등록되는 Queue.
-    - 테스크큐에 등록된 함수는 언제실행되는가?   이벤트루프에의해 콜스택으로 옮겨짐으로써 실행됨.
-    - microtask queue에대비하여 한루프에 한개의 콜백함수만 옮김.
+   - setTimeOut , event Listener, fetch 등에 등록된 콜백함수가 등록되는 Queue.
+   - 테스크큐에 등록된 함수는 언제실행되는가?   이벤트루프에의해 콜스택으로 옮겨짐으로써 실행됨.
+   - microtask queue에대비하여 한루프에 한개의 콜백함수만 옮김.
 
-    #### 2). microtask Queue 
+   #### 2). microtask Queue 
 
-    - promise, mutation observer등에 등록된 콜백함수가 등록되는 Queue.
-    - 이벤트루프가 돌떄 콜백함수가 존재하면, 모든 콜백함수가 없어질때까지 콜스택으로 옮김. (옮겨진 콜백함수가 종료될시 한개씩 옮김.)
+   - promise, mutation observer등에 등록된 콜백함수가 등록되는 Queue.
+   - 이벤트루프가 돌떄 콜백함수가 존재하면, 모든 콜백함수가 없어질때까지 콜스택으로 옮김. (옮겨진 콜백함수가 종료될시 한개씩 옮김.)
 
-        → 모든 콜백함수가 옮겨질때까지 이벤트루프가 microtask Queue에 머무른다.
-    - microtask Queue에 이벤트 루프가 머무르는동안 또다른 콜백함수가 등록되었을시, 그 콜백함수도 콜스택으로 옮겨 실행함. 즉, microtask queue 가 텅텅빌때까지 이벤트루프는 micro Queue에 머무른다.
+       → 모든 콜백함수가 옮겨질때까지 이벤트루프가 microtask Queue에 머무른다.
+   - microtask Queue에 이벤트 루프가 머무르는동안 또다른 콜백함수가 등록되었을시, 그 콜백함수도 콜스택으로 옮겨 실행함. 즉, microtask queue 가 텅텅빌때까지 이벤트루프는 micro Queue에 머무른다.
 
  <br/><br/>
  <br/><br/>
