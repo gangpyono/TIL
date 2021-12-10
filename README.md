@@ -1,5 +1,6 @@
 # 드림코딩엘리 강의내용 정리
-Browser101
+# 브라우저
+- 모든 브라우저는 자바스크립트 엔진을 내장하고있다. ex) 크롬 : v8자바스크립트엔진 내장.
 
 ## web api
 * [webApi](https://github.com/gangpyono/DreamCoding_browser101/blob/main/Browser101/API_browser.md)
