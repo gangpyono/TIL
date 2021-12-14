@@ -24,11 +24,9 @@
 
 
 2.3  요소를 순회하면서 콜백 함수를 반복 호출하는 내용의 일부 메서드는 별도의 인자로 this를 받기도 한다.
-
-
-
-
-
+</br>
+</br>
+</br>
 ### 1.1 전역 공간에서의 this는 전역객체를 참조한다.(브라우저에서는 window,Node.js에서는 global 참조)
 ```js
 console.log(this); // { alert: f(), atob: f(), blur: f(), btoa: f(), ... }
@@ -130,6 +128,9 @@ Cat { bark: '야옹', name: '나비', age: 5 }
 // 출력된 결과를 확인했을떄, choco,nabi에 할당되는 값을 만들기위해 호출된 생성자함수 내부에서의 this는 각각 choco, nabi를 가리켰음을 알 수 있다. 
 ```
 
+</br>
+</br>
+</br>
 
 ### 2.1 call,apply 메서드는 this를 명시적으로 지정하면서 함수 또는 메서드를 호출한다.
 #### call 메서드
