@@ -36,6 +36,9 @@ this.setState( state => { count : this.state.count +1 });
 
 
  
+### useMemo 
+- 컴포넌트의 렌더링이 발생하는 조건중 부모컴포넌트가 렌더링됬을떄 렌더링되는 상황을 막아줌으로써, 컴포넌트의 state or props가 변경된상황 외엔 렌더링이 되는걸 막아준다.
+
 
 
 
