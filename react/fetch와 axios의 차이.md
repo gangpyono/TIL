@@ -5,3 +5,7 @@
   
 # fetch와 axios의 차이
 
+## axios
+- fetch 대용으로 쓸 수 있다.
+- 브라우저간 호환성이 좋다. ( IE에서도 동작한다.)
+- https://github.com/axios/axios
