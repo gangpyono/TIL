@@ -203,7 +203,7 @@ var report = {
 report.add(60, 85, 95);  //  앞에 (.)이 존재함으로, this로 report설정. 
 console.log(report.sum, report.count, report.average()); // 240 3 80
 ```
-
+- 위 forEach함수와같이 요소를 순회하면서 콜백함수를 반복호출하고 this를 별도의 인자로 받는 함수목록.
 ```js
 Array.prototype.forEach(callback[, thisArg])
 Array.prototype.map(callback[, thisArg])
