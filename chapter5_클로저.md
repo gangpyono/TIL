@@ -1,4 +1,4 @@
-# 쿨로저란
+# 클로저란
 - 어떤 함수 A에서 선언한 변수 a를 참조하는 내부함수 B를 외부로 전달할 경우 A의 실행 컨텍스트가 종료된 이후에도 변수a가 사라지지 않는 현상.
 
 ```js
@@ -74,5 +74,31 @@ console.log(outer2()); // 3
 ```
 - outer2를통해 outer밖에서도 a변수를 참조할 수 있게되었다.
 - 즉 변수a의 접근권한을 return문을통해 return한 변수들은 public한 값이되고, 그렇지않은 변수들은 private한 값이된다.
+
  
+ 
+### 커링 함수
+- 여러 개의 인자를 받는 함수를 하나의 인자만 받는 함수로 나눠서 순차적으로 호출될 수 있게 체인 형태로 구성한 것을 말한다.
+- 한 번에 하나의 인자만 전달하는 것을 원칙으로한다.
+- 마지막 인자를 받기전까지 함수가 실행되지않는다.(함수의 실행을 미루는 지연실행으로 지칭)
+```js
+var curry3 = function(func) {
+  return function(a) {
+    return function(b) {
+      return func(a, b);
+    };
+  };
+};
+
+var getMaxWith10 = curry3(Math.max)(10); //  a인자를 받고 b인자를 받을 함수.
+console.log(getMaxWith10(8)); // 10  // b인자를받고 func에 a,b를 인자로 전달.
+console.log(getMaxWith10(25)); // 25
+
+var getMinWith10 = curry3(Math.min)(10);
+console.log(getMinWith10(8)); // 8   
+console.log(getMinWith10(25)); // 10  
+```
+
+### 사용시 주의사항
+- 클로저는 메모리를 차지하는 개념이므로 사용하지않게된 클로저에대해서는 메모리를 차지하지않도록 관리해줘야한다.
 
