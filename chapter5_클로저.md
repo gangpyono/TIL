@@ -35,6 +35,44 @@ console.log(outer2()); // 2
 console.log(outer2()); // 3
 ```
 
-## 클로저의 활용 사례
-### 콜백 함수 내부에서 외부 데이터를 사용하고자 할떄.
+## 클로저는 언제 쓰는가?
+
+### 콜백함수 내부에서 외부 데이터를 사용하고자 할떄.
+```js
+var fruits = ['apple', 'banana', 'peach'];
+var $ul = document.createElement('ul');
+
+var alertFruitBuilder = function(fruit) {
+  return function() {
+    alert('your choice is ' + fruit);
+  };
+};
+fruits.forEach(function(fruit) {
+  var $li = document.createElement('li');
+  $li.innerText = fruit;
+  $li.addEventListener('click', alertFruitBuilder(fruit)); // 반환된함수가 이후 이벤트가 발생했을떄 반환된 함수의 실행컨텍스트에 존재하는 outerEnvirnomentReference에 의해 참조되는 alertFruitBuilder의 인자로넘어온 fruit를 참조할 수 있게된다. 즉, alertFruitBuilder(fruit)는 클로저가 존재한다.
+  $ul.appendChild($li);
+});
+document.body.appendChild($ul);
+```
+
+### 접근권한 제어(정보 은닉)
+- 접근 권한에는 public(어디에서든 접근가능), private(내부에서만 사용가능하며 외부에 노출 시키지않음)이 존재한다.
+- 다만 자바스크립트에서는 접근권한을 직접적으로 부여할수있게 설계되어있지않음. 이를 클로저를 통해 public한 값과 private한 값을 구분하는것이 가능하다.
+  
+ ```js
+ var outer = function() {
+  var a = 1;
+  var inner = function() {
+    return ++a;
+  };
+  return inner;
+};
+var outer2 = outer();
+console.log(outer2()); // 2
+console.log(outer2()); // 3
+```
+- outer2를통해 outer밖에서도 a변수를 참조할 수 있게되었다.
+- 즉 변수a의 접근권한을 return문을통해 return한 변수들은 public한 값이되고, 그렇지않은 변수들은 private한 값이된다.
+ 
 
