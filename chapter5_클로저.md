@@ -12,6 +12,7 @@ var outer = function() {
 var outer2 = outer();
 console.log(outer2); // 2
 ```
+- 외부함수의 변수를 참조하는 내부함수.
 - outer 함수의 실행 컨텍스트가 종료되기전에 inner 함수의 실행컨텍스트가 종료된다.
 
 ## outer 함수의 실행 컨텍스트가 종료된 후에도 inner함수를 호출할 수 있게 만들면 어떨까요?
