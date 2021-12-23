@@ -49,7 +49,8 @@ console.log(es6Instance.method()); // es6 method
 ```
 
 - ES6의 클래스 상속
-```var Rectangle = class {
+```js
+var Rectangle = class {
   constructor(width, height) {
     this.width = width;
     this.height = height;
