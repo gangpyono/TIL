@@ -7,4 +7,5 @@
 * [Chapter4. 콜백함수](https://github.com/gangpyono/coreJavascript/blob/main/chapter4_callback.md)
 * [Chapter5. 클로저](https://github.com/gangpyono/coreJavascript/blob/main/chapter5_%ED%81%B4%EB%A1%9C%EC%A0%80.md)
 * [Chapter6. 프로토타입](https://github.com/gangpyono/coreJavascript/blob/main/chapter6.prototype.md)
+* [Chapter7. 클래스](https://github.com/gangpyono/coreJavascript/blob/main/chapter7.class.md)
 
