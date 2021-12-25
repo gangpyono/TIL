@@ -19,8 +19,8 @@ console.log(outer2); // 2
 
 ### outer 함수의 실행 컨텍스트가 종료된 후에도 내부함수인 inner함수를 호출할 수 있게 만들면 어떨까요?
 - outer의 반환값으로 inner함수실행 결과값이아닌 함수 자체를 반환하면, outer2는 inner함수의 주소값을 참조하게된다.
-- 이후 console.log등을통해 inner함수를 호출할 수 있으며, a값또한 참조가능한 모습을 볼 수 있다.
-- 근데 어떻게 outer함수의 LexicalEnvironment에 저장되있는 inner함수,a에 접근할 수 있을까? outer실행컨텍스트는 이미 종료되었는데?
+- 이후 inner함수가 호출될떄, a값또한 참조가능한 모습을 볼 수 있다.
+- 근데 어떻게 outer함수의 LexicalEnvironment에 저장되있는 a에 접근할 수 있을까? outer실행컨텍스트는 이미 종료되었는데?
 - 가비지 컬렉터의 동작방식떄문인데, 가비지 컬렉터는 기본적으로 어떤 값을 참조하는 변수가 하나라도 있다면 그 값은 수집 대상에 포함시키지 않는다. (이 상황에선 정확하게는 이후 호출과정을 통해 참조될 예정인 값이다.)
 - outer함수가 inner함수를 반환하면서 outer함수의 실행컨텍스트가 종료될텐데( === outerEnvironmentReference와 LexicalEnvironment를 참조하고있던 대상이 사라짐), inner함수 자체를 반환했음으로, 언젠가 이 반환된 inner함수를 outer2에의해 호출하게되어
   inner함수의 실행컨텍스트를 활성화 시킬일이 발생했을떄(===inner함수를 호출할떄), 구성사항으로 outerEnvironmentReference에 저장될 outer함수의 LexicalEnvironment가 필요할 것임으로 (참조할것임으로)
