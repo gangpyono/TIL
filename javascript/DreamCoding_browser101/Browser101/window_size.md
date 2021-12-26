@@ -1,6 +1,5 @@
 # 1.윈도우 사이즈
 
-
 - window.screen.Width/Height : 디스플레이 사이즈(모니터 사이즈)
 - window.outerWidth/Height : 브라우저 사이즈(url,탭창 포함)
 - window.innerWidth/Height : 스크롤바 포함 전체 웹 애플리케이션(url 아래부터)
@@ -18,8 +17,8 @@
     <meta name="author" content="gangpyo">
     <meta name="description" content="Window_size-project ">
 
-    
-    
+
+
     <style>
         .tag {
   font-size: 100px;
@@ -27,7 +26,7 @@
   background: purple;
 }
     </style>
-    
+
 </head>
 <body>
     <div class="tag">windowSize</div>
@@ -45,11 +44,10 @@
         const tag = document.querySelector('.tag');
         window.addEventListener('resize',() => {
             updateTag();
-            
+
         });
 
     </script>
 </body>
 </html>
 ```
-
