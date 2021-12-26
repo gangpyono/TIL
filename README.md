@@ -39,7 +39,7 @@
 
 # react
 
-- [what is react](https://github.com/gangpyono/DreamCoding_react/blob/main/react/what%20is%20react.md)
+- [what is react](https://github.com/gangpyono/TIL/blob/main/react/DreamCoding_react/react/what%20is%20react.md)
 - [jsx](https://github.com/gangpyono/DreamCoding_react/blob/main/react/jsx.md)
 - [props](https://github.com/gangpyono/DreamCoding_react/blob/main/react/props.md)
 - [state](https://github.com/gangpyono/DreamCoding_react/blob/main/react/state%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0.md)
