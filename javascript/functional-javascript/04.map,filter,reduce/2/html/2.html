@@ -1,0 +1,28 @@
+<script src="../lib/fx.js"></script>
+
+<script>
+  const products = [
+    {name: '반팔티', price: 15000},
+    {name: '긴팔티', price: 20000},
+    {name: '핸드폰케이스', price: 15000},
+    {name: '후드티', price: 30000},
+    {name: '바지', price: 25000}
+  ];
+
+  const add = (a, b) => a + b;
+// 함수가 복잡해 보이겠지만, 오른쪽에서 왼쪽으로 읽어나간다.
+// 함수형 프로그래밍에선 함수를 중첩해나가면서 값들을 축약해나간다.
+// 어떤값을 기대하는지 직접 작성함으로써 결과값을 미리 확인을 할 수 있다.
+//코드를 값으로 다룰수 있기때문에, 코드인 함수를 받아서 평가하는 시점을 원하는대로 다룰 수가 있기때문에 코드의 표현력을 높일 수 있다.
+  log(
+    reduce(
+      add,
+      map(p => p.price,
+        filter(p => p.price < 20000, products))));
+
+  log(
+    reduce(
+      add,
+      filter(n => n >= 20000,
+        map(p => p.price, products))));
+</script>

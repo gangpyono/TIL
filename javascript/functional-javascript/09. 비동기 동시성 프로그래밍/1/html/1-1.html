@@ -1,0 +1,119 @@
+<script src="../lib/fx.js"></script>
+
+학습목표 1. 콜백 개념. 2. 콜백 vs 프로미스 차이점. 3. 함수형 프로그래밍과
+연관지었을때 프로미스가 어떻게 활용되는지. # Promise ## 일급
+
+<script>
+  function add10(a, callback) {
+    setTimeout(() => callback(a + 10), 100);
+  }
+
+  var a = add10(5, (res) => {
+    add10(res, (res) => {
+      add10(res, (res) => {
+        // log(res);
+      });
+    });
+  });
+
+  // log(a);
+
+  function add20(a) {
+    // 프로미스가 끝났다는것을 resolve함수를 실행시킴으로써 알려줌.
+    return new Promise((resolve) => setTimeout(() => resolve(a + 20), 100));
+  }
+
+  var b = add20(5) //
+    .then(add20) //
+    .then(add20);
+  // .then(log);
+
+  // log(b);
+
+  //# 차이점
+  //1. 가독성에서의 차이.
+  //2. 비동기상황을 일급값으로 다룬다는점에서 차이. (프로미스는 대기,성공,실패를 다루는일급값으로 이루어져있다.)
+  //3. 프로미스의 대기상태 가장중요.(떠올리면서 프로그래밍을 진행할 것.)
+  //4. 정의를했을떄, 변수자체에 담기는 값이 다르다. 프로미스의 경우, 이 변수에 담긴 값을통해 추가적인 동작을 취할 수 있다.
+  //5. 프로미스는 비동기로 일어난 상황에대해서 값으로 다룰 수 있다.(일급을 의미)
+</script>
+
+## 일급 활용 (프로미스 활용)
+
+<script>
+  const go1 = (a, f) => f(a);
+  const add5 = (a) => a + 5;
+  log(go1(10, add5));
+
+  const delay100 = (a) =>
+    new Promise((resolve) => setTimeout(() => resolve(a), 100));
+
+  const go1 = (a, f) => (a instanceof Promise ? a.then(f) : f(a));
+  const add5 = (a) => a + 5;
+
+  const n1 = 10;
+  // log(go1(go1(n1, add5), log)); // undefined
+
+  const n2 = delay100(10);
+  // log(go1(go1(n2, add5), log));   -> 계속 값을 다룰 수 있도록 값을 이어준다.(프로미스) / 값이 전달되지 않았을때 실행시키지 않는방법을
+  // 모나드를 통해 구현.
+</script>
+
+## Composition 프로미스는 비동기 상황에서 함수합성을 안전하게 하기위한 도구.
+(모나드) 모나드 란? -
+<script type="module">
+  // f . g
+  // f(g(x))
+  // 상황에따라 안전하게 합성을 하기위해 모나드라는 개념이 생김.
+  // 이중에 비동기상황을 안전하게 합성하기위해 프로미스를 사용.
+
+  const g = (a) => a + 1;
+  const f = (a) => a * a;
+
+  // log(f(g(1)));  최종 log로 전달되기 전의 값이 유의미한 값
+  // log(f(g()));   값이 전달되지 않았음에도 불구하고 출력이발생함. => 안전하지않음.
+
+  Array.of(1).map(g).map(f) /*.forEach(r => log(r))*/;
+  [].map(g).map(f) /*.forEach(r => log(r))*/;
+
+  Promise.resolve(2).then(g).then(f) /*.then(r => log(r))*/; // 프로미스는 비동기상황에서 안전하게 합성하기위한 도구.
+  new Promise((resolve) => setTimeout(() => resolve(2), 100))
+    .then(g)
+    .then(f) /*.then(r => log(r))*/;
+</script>
+
+## Kleisli Composition : 오류가있을 수 있는 상황에서의 함수 합성을 안전하게하는
+하나의 규칙.
+<script>
+  // f . g
+  // f(g(x)) = f(g(x))
+  // f(g(x)) = g(x)    g함수에서 오류가 발생했을떄, g함수를 태우고 f를태워도 g만태웠을떄와 동일한 결과를 보여주는것.
+
+  var users = [
+    { id: 1, name: "aa" },
+    { id: 2, name: "bb" },
+    { id: 3, name: "cc" },
+  ];
+
+  const getUserById = (id) =>
+    find((u) => u.id == id, users) || Promise.reject("없어요!");
+
+  const f = ({ name }) => name;
+  const g = getUserById;
+
+  // const fg = id => f(g(id));
+
+  const fg = (id) =>
+    Promise.resolve(id)
+      .then(g)
+      .then(f)
+      .catch((a) => a);
+
+  fg(2).then(log);
+
+  setTimeout(function () {
+    users.pop();
+    users.pop();
+    fg(2).then(log);
+  }, 10);
+</script>

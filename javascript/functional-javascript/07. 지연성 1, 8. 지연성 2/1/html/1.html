@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script src="fx copy.js"></script>
+
+    ## range : 인자를받고 그 인자의 길이만큼의 배열생성.
+
+    <script>
+      var add = (a, b) => a + b;
+
+      const range = (l) => {
+        let i = -1;
+        let res = [];
+        while (++i < l) {
+          res.push(i);
+        }
+        return res;
+      };
+
+      var list = range(4);
+      log(list);
+      log(reduce(add, list));
+    </script>
+
+    ## 느긋한 L.range ## range와 무슨차이인가 -range는 실행했을떄
+    코드가평가되면서 값이 만들어짐. - L.range는 실행했을당시엔 평가가되지않고(
+    == 지연평가), 이후에 next()호출할경우에 평가되어 값이 만들어짐.
+
+    <script>
+      const L = {};
+      // 위와 동일한 표현.
+      L.range = (l) => {
+        let i = -1;
+        let res = [];
+        while (++i < l) {
+          res.push(i);
+        }
+        return res;
+      };
+
+      //제너레이터로 전환
+      L.range = function* (l) {
+        let i = -1;
+        con;
+        // let res = [];
+        while (++i < l) {
+          // res.push(i);
+          yield i;
+        }
+        // return res;
+      };
+
+      let list = L.range(4);
+      log(list);
+      //reduce를 탈떄 range는 이터레이터로 만드는과정을 거친후 평가됨.
+      //L.range는 이터레이터이기떄문에 바로 평가됨.
+      // 효율성을 비교해보자. ( 아주 큰 차이는 없음.)
+      log(reduce(add, list));
+      console.clear();
+    </script>
+
+    ## range vs L.range 성능차이 테스트.
+    <script>
+      function test(name, time, f) {
+        console.time(name);
+        while (time--) f();
+        console.timeEnd(name);
+      }
+
+      // test('range', 10, () => reduce(add, range(1000000)));     // 492ms
+      // test('L.range', 10, () => reduce(add, L.range(1000000))); // 256ms
+      console.clear();
+    </script>
+
+    ## take 지연성을 가지는 값을 이터레이터로 만들게된다면 take와 같은 일반적인
+    함수(이터러블 프로토콜을 따르는)와 소통할 수 있게된다. ( 조합성이 높다. )
+    <script>
+      const take = (l, iter) => {
+        let res = [];
+        for (const a of iter) {
+          res.push(a);
+          if (res.length == l) return res;
+        }
+        return res;
+      };
+      //range같은경우 일단 100000의 길이를 갖는 배열을 만들지만,
+      //L.range는 필요한만큼만 값을 만들어서 반환하기떄문에 더 효율적이다.
+      // log(take(5,range(100000)));
+      // log(take(5,L.range(100000)));
+
+      console.time("");
+      go(range(10000), take(5), reduce(add), log);
+      console.timeEnd(""); // 9.27ms
+
+      console.time("");
+      go(L.range(10000), take(5), reduce(add), log);
+      console.timeEnd(""); // 0.43ms
+    </script>
+
+    <script>
+      const take = curry((l, iter) => {
+        let res = [];
+        for (const a of iter) {
+          res.push(a);
+          if (res.length == l) return res;
+        }
+        return res;
+      });
+      console.time("");
+      go(range(10000), take(5), reduce(add), log); //0.97ms
+      console.timeEnd("");
+
+      console.time("");
+      go(L.range(10000), take(5), reduce(add), log); // 0.17ms
+      console.timeEnd("");
+    </script>
+  </body>
+</html>
