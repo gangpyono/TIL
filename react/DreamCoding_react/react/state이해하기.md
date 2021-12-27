@@ -30,7 +30,7 @@
 ## 리액트에서 제공하는 setState함수는 두가지 종류가 있다.
 - setState(newState) //새로운 state오브젝트를 인자로 바로 받는함수.
 - setState(preState => {return newState}) // 이전 preState를받아서 그걸로 계산한후 새로운 state를 리턴하는 함수를 인자로 받는 함수.
-
+<br></br>
 
  
 ## 함수형 컴포넌트의 useMemo 
