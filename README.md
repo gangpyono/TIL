@@ -37,7 +37,7 @@
   <br></br>
   
 ## functional-javascript
-
+- [docs](https://github.com/gangpyono/TIL/tree/main/javascript/functional-javascript)
 
 <br></br>
 <br></br>
