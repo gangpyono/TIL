@@ -1,4 +1,4 @@
-ㅠㅠ# 1.State 이해하기
+# 1.State 이해하기
 ## state 변경 -> render함수 호출로 UI업데이트
 
 <img width="800" alt="스크린샷 2021-05-28 오후 11 33 25" src="https://user-images.githubusercontent.com/58588011/119999814-1c7d1780-c00d-11eb-943e-222cc4c73579.png">
