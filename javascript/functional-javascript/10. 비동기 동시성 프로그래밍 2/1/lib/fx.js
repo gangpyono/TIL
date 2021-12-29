@@ -9,6 +9,7 @@ const go1 = (a, f) => a instanceof Promise ? a.then(f) : f(a);
 
 const reduceF = (acc, a, f) =>
   a instanceof Promise ?
+  // then의 두번쨰인자로 reject를 전달할 수 있다.
     a.then(a => f(acc, a), e => e == nop ? acc : Promise.reject(e)) :
     f(acc, a);
 
@@ -35,6 +36,14 @@ const pipe = (f, ...fs) => (...as) => go(f(...as), ...fs);
 const take = curry((l, iter) => {
   let res = [];
   iter = iter[Symbol.iterator]();
+  // 재귀를 하려는곳을 유명함수의 즉시실행함수로 묶어준다.
+  // let cur;
+  // while (!(cur = iter.next()).done) {
+  //   const a = cur.value;
+  //   res.push(a);
+  //   if (res.length == l) return res;
+  // }
+  // return res;
   return function recur() {
     let cur;
     while (!(cur = iter.next()).done) {
@@ -42,6 +51,7 @@ const take = curry((l, iter) => {
       if (a instanceof Promise) {
         return a
           .then(a => (res.push(a), res).length == l ? res : recur())
+          // nop일경우 push를하지않고 다음인자로 넘긴다.
           .catch(e => e == nop ? recur() : Promise.reject(e));
       }
       res.push(a);
@@ -62,16 +72,30 @@ L.range = function* (l) {
 
 L.map = curry(function* (f, iter) {
   for (const a of iter) {
+    // go1을 사용함으로써 비동기처리를 해줄수있다.
+    //yield f(a);
     yield go1(a, f);
   }
 });
 
 const nop = Symbol('nop');
 
+
+// 기존 filter 
+// L.filter = curry(function* (f, iter) {
+//   for (const a of iter) {
+    // f함수에 전달될떄 프로미스를 해결하고 전달해야한다.
+//     if (f(a)) yield a;
+//   }
+// });
+
 L.filter = curry(function* (f, iter) {
   for (const a of iter) {
     const b = go1(a, f);
-    if (b instanceof Promise) yield b.then(b => b ? a : Promise.reject(nop));
+    //reject를 해줌으로써 다음함수로 전달되지않는다.
+    // reject에 인자로 값을 전달해주지 않으면 다음함수로 넘어가는걸 원하지않는 상황인지, 또다른 에러가 발생한지 알 수 없음으로, symbol설정.
+    // 이후 take에서 catch로 == nop인 경우를 핸들링.
+    if (b instanceof Promise) yield b.then(b => b ? a : Promise.reject(nop)); 
     else if (b) yield a;
   }
 });
