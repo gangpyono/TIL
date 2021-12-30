@@ -1,7 +1,7 @@
 # 1.Critical rendering path.
 <img width="766" alt="스크린샷 2021-12-30 오후 2 02 17" src="https://user-images.githubusercontent.com/58588011/147723047-e2bde2a3-f7a3-4496-8fbc-513272ebc36c.png">
 
-
+[Critical rendering path 공식문서링크](https://developer.mozilla.org/ko/docs/Web/Performance/Critical_rendering_path)
 <br></br>
 
 ## 1) Construction.
