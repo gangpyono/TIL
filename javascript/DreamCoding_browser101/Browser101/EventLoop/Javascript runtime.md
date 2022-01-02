@@ -67,7 +67,7 @@
 
 <img width="645" alt="스크린샷 2022-01-02 오후 1 44 59" src="https://user-images.githubusercontent.com/58588011/147866507-051e822b-2aac-4834-8f19-624873208e48.png">
 
-- setTimeOut , event Listener, 일반적인 함수 등에 등록된 **콜백함수**가 등록되는 Queue.
+- setTimeOut , event Listener등에 등록된 **콜백함수**가 등록되는 Queue.
 - 테스크큐에 등록된 함수는 언제실행되는가? 이벤트루프에의해 콜스택으로 옮겨짐으로써 실행됨.(콜스택이 비워졌을떄)
 - **microtask queue에대비하여 한루프에 한개의 콜백함수만 옮김**.
 
