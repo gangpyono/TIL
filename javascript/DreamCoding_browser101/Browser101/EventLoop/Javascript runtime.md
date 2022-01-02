@@ -116,3 +116,5 @@
   - 브라우저마다 다르지만 대부분 16.7ms당 한번씩 리페인트 실행.
 
 
+# 참고자료
+- https://www.youtube.com/watch?v=8aGhZQkoFbQ&t=1600s
