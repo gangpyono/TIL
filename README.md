@@ -42,8 +42,9 @@
 <br></br>
 <br></br>
 
-# react
+# React
 
+## Concept
 - [what is react](https://github.com/gangpyono/TIL/blob/main/react/DreamCoding_react/react/what%20is%20react.md)
 - [VDOM](https://github.com/gangpyono/TIL/blob/main/react/DreamCoding_react/react/vdom.md)
 - [jsx](https://github.com/gangpyono/TIL/blob/main/react/DreamCoding_react/react/jsx.md)
@@ -52,11 +53,23 @@
 - [component](https://github.com/gangpyono/TIL/blob/main/react/DreamCoding_react/react/component.md)
 - [lifeCycle](https://github.com/gangpyono/TIL/blob/main/react/DreamCoding_react/react/lifeCycle.md)
 - [CSS Preprocessor](https://github.com/gangpyono/TIL/blob/main/react/DreamCoding_react/react/CSS%EC%A0%84%EC%B2%98%EB%A6%AC%EA%B8%B0.md)
+
+  <br></br>
+## Library
 - [fetch & axios](https://github.com/gangpyono/TIL/blob/main/react/DreamCoding_react/react/fetch%EC%99%80%20axios%EC%9D%98%20%EC%B0%A8%EC%9D%B4.md) 
+
+
+<br></br>
+<br></br>
+
 
 # algorithm
 - [baekJoon](https://github.com/gangpyono/TIL/tree/main/algorithm/BaekJoon_algorithm_JS)
 - [inflearn](https://github.com/gangpyono/TIL/tree/main/algorithm/inflearn_algorithm_JS)
+
+
+<br></br>
+<br></br>
 
 # Network
 - [docs](https://github.com/gangpyono/TIL/tree/main/network)
