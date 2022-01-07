@@ -13,3 +13,7 @@
 - 사용자가 부드럽게 웹어플리케이션을 이용할 수 있으려면 60fps를 유지해야하는데, 리액트는 이부분을 보장해준다. (60fps : 1초에 60개 프레임의 업데이트)
   <br></br>
   <br></br>
+
+
+## 관련 링크
+- [React Virtual DOM vs Real DOM](https://medium.com/devinder/react-virtual-dom-vs-real-dom-23749ff7adc9)
