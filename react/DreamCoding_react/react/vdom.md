@@ -17,3 +17,4 @@
 
 ## 관련 링크
 - [React Virtual DOM vs Real DOM](https://medium.com/devinder/react-virtual-dom-vs-real-dom-23749ff7adc9)
+- [ReactDOM.render()](https://dream-frontend.tistory.com/249?category=819621)
