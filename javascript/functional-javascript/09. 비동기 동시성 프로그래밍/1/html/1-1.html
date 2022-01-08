@@ -5,42 +5,57 @@
 2. 콜백 vs 프로미스 차이점. 
 3. 함수형 프로그래밍과 연관지었을때 프로미스가 어떻게 활용되는지.
 
-# Promise 
+
+# Promise
+
 
 ## 일급
 
 <script>
   function add10(a, callback) {
+    // 사용될값과 콜백함수를 인자로 전달받는다.
     setTimeout(() => callback(a + 10), 100);
   }
 
-  var a = add10(5, (res) => {
-    add10(res, (res) => {
-      add10(res, (res) => {
-        // log(res);
-      });
-    });
+  //callback 단독사용.
+  add10(5,res => {
+    log(res);
   });
+  
+  //callback연속사용. (연속으로 사용할 경우 promise에비해 가독성이 떨어진다.)
+  var a = add10(5, (res) => {
+            add10(res, (res) => {
+              add10(res, (res) => {
+                // log(res);
+              });
+            });
+          });
 
-  // log(a);
+  //log(a);  // undefined
 
   function add20(a) {
+    // 함수내부에서 필요한 인자만 전달받는다.
     // 프로미스가 끝났다는것을 resolve함수를 실행시킴으로써 알려줌.
     return new Promise((resolve) => setTimeout(() => resolve(a + 20), 100));
   }
 
+  //promise 단독사용.
+  add20(5)
+    .then(console.log);
+  
+  //promise 연속사용.
   var b = add20(5) //
     .then(add20) //
     .then(add20);
   // .then(log);
 
-  // log(b);
+  console.log(b);  // Promuse{<pending>}
 
   //# 차이점
-  //1. 가독성에서의 차이.
-  //2. 비동기상황을 일급값으로 다룬다는점에서 차이. (프로미스는 대기,성공,실패를 다루는일급값으로 이루어져있다.)
-  //3. 프로미스의 대기상태 가장중요.(떠올리면서 프로그래밍을 진행할 것.)
-  //4. 정의를했을떄, 변수자체에 담기는 값이 다르다. 프로미스의 경우, 이 변수에 담긴 값을통해 추가적인 동작을 취할 수 있다.
+  //1. 가독성에서의 차이.(콜백지옥 해결)
+  //(가장중요)2. 비동기상황을 일급으로 다룬다는점에서 차이. (프로미스는 대기,성공,실패를 다루는 일급값으로 이루어져있는 instance를 반환하는 class다) 
+  //3. 대기상태를 다루는 값이 존재한다는점. (이부분을 생각하면서 코드를 작성할것)
+  //4. 정의를했을떄, 변수자체에 담기는 값이 다르다. 프로미스의 경우, 변수에 담긴 값을통해 추가적인 동작을 취할 수 있다. (콜백은 undefined)
   //5. 프로미스는 비동기로 일어난 상황에대해서 값으로 다룰 수 있다.(일급을 의미)
 </script>
 
