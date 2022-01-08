@@ -163,7 +163,7 @@
     for (const k in obj) yield [k, obj[k]];
   };
 
-  const join = curry((sep = ",", iter) =>
+  const join = curry((sep = ",", iter) =>     // array의 내장함수지만, 이터러블로 확장시킴.
     reduce((a, b) => `${a}${sep}${b}`, iter)
   );
 
