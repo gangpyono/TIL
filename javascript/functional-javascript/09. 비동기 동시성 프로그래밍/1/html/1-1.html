@@ -72,33 +72,62 @@
   const go1 = (a, f) => (a instanceof Promise ? a.then(f) : f(a));
   const add5 = (a) => a + 5;
 
+  let r = go1(10,add5);
+  log(r):
+  
+  let r2 = go1(delay100(10),add5);
+  r2.then(log);
+  
   const n1 = 10;
-  // log(go1(go1(n1, add5), log)); // undefined
+  log(go1(go1(n1, add5), log))); // undefined반환
 
   const n2 = delay100(10);
-  // log(go1(go1(n2, add5), log));   -> 계속 값을 다룰 수 있도록 값을 이어준다.(프로미스) / 값이 전달되지 않았을때 실행시키지 않는방법을
-  // 모나드를 통해 구현.
+   log(go1(go1(n2, add5), log)));  // -> 계속 값을 다룰 수 있도록 값을 이어준다.(프로미스반환) 
+  // 모나드를 통해 구현. 
 </script>
 
-## Composition 프로미스는 비동기 상황에서 함수합성을 안전하게 하기위한 도구.
-(모나드) 모나드 란? -
+## Composition(합성)  
+### 함수합성을 안전하게 할수있게 하기위해 모나드를 활용한다.
+### 그중 비동기 상황을 안전하게 합성하기위해 promise를 활용한다.
+
 <script type="module">
+  // 함수 합성
   // f . g
   // f(g(x))
-  // 상황에따라 안전하게 합성을 하기위해 모나드라는 개념이 생김.
-  // 이중에 비동기상황을 안전하게 합성하기위해 프로미스를 사용.
 
+  // 모나드란?  : []와같은 빈 박스라 생각한다. 
+  // ex. [1]
+  // 연산에 사용될 값들을 박스에 담는다.
+  // 함수합성을 박스가 가지고있는 메서드를 활용하여 합성한다.
+ 
   const g = (a) => a + 1;
   const f = (a) => a * a;
 
-  // log(f(g(1)));  최종 log로 전달되기 전의 값이 유의미한 값
-  // log(f(g()));   값이 전달되지 않았음에도 불구하고 출력이발생함. => 안전하지않음.
+  // log(f(g(1)));  최종 log로 전달되기 전의 값이 유의미한 값.
+  // log(f(g()));   값이 전달되지 않았음에도 불구하고 NaN이라는 출력이 발생함. => 안전하게 합성되지않음. 이상황을 어떻게 안전하게 합성한 함수로 변환할 수 있을까? -> 모나드 활용.
 
+  // [1].map(g).map(f) 이처럼 박스가 가지고있는 메서드를 활용하여 합성한다.
+  // 실제로 우리가 필요한것은, '배열에담긴' 값이 아닌, 값 그자체만이 필요하다.
+  // 따라서 [1].map(g).map(f).forEach(r => log(r));  forEach메서드와 값이 값을 꺼내주는 작업이 필요하다.  =>  log(f(g(1))) 와 동일한 코드.
+  
+  // 이렇게 합성했을시의 이점은?
+  // [1].map(g).map(f).forEach(r => log(r));   
+  // [0].map(g).map(f).forEach(r => log(r));  출력이 발생하지않는다.(forEach의 콜백함수 자체가 실행되지않는다.)
+  // 어떤 박스 안에 값이 있는지 없는지에 따라, 함수 합성을 안전하게 하고 있다는 의미.
+  
+  // Promise와 비교하기위한 함수로써의 배열 표현.
   Array.of(1).map(g).map(f) /*.forEach(r => log(r))*/;
   [].map(g).map(f) /*.forEach(r => log(r))*/;
-
-  Promise.resolve(2).then(g).then(f) /*.then(r => log(r))*/; // 프로미스는 비동기상황에서 안전하게 합성하기위한 도구.
-  new Promise((resolve) => setTimeout(() => resolve(2), 100))
+  
+  // 그렇다면 Promise로는 어떻게 함수합성을 하는가?
+  // 프로미스는 비동기상황에서 안전하게 합성하기위한 도구.
+  // 배열이 map을통해 합성했다면, Promise는 then을통해 합성한다.
+  // 최종적으로 then을 통해 사용할 수 있는 값으로 변환
+  Promise.resolve(2).then(g).then(f) /*.then(r => log(r))*/; 
+  Promise.resolve().then(g).then(f) /*.then(r => log(r))*/;  // NaN를 출력한다.
+  //Promise은 안에 값이 있는지없는지에대한 관점에서의 안전한 합성을 하려는 도구가 아니고, 비동기 상황에서의 안전한 합성을 위한것.
+  
+  new Promise((resolve) => setTimeout(() => resolve(2), 100)) // 대기가 발생했을떄(비동기상황) 합성을 보장해준다.
     .then(g)
     .then(f) /*.then(r => log(r))*/;
 </script>
