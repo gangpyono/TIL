@@ -76,3 +76,4 @@
 - [URI와 웹 브라우저 요청 흐름](https://github.com/gangpyono/TIL/blob/main/network/URL%EA%B3%BC%20%EC%9B%B9%20%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%20%EC%9A%94%EC%B2%AD%20%ED%9D%90%EB%A6%84.md)
 - [HTTP 기본](https://github.com/gangpyono/TIL/blob/main/network/HTTP.md)
 - [HTTP method](https://github.com/gangpyono/TIL/blob/main/network/HTTP%20method.md)
+- [HTTP method 활용](https://github.com/gangpyono/TIL/blob/main/network/HTTP%20method%20%ED%99%9C%EC%9A%A9.md)
