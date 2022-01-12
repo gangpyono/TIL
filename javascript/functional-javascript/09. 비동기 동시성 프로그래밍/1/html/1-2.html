@@ -3,6 +3,93 @@
 ## go, pipe, reduce에서 비동기 제어
 
 <script>
+  go(1,
+     a => a +10,
+     a => a+100,
+     a => a+1000,
+     log);
+  
+  // Promise가 중간에 리턴된다면?
+  go(1,
+     a => a +10,
+     a => Promise.resolve(a+100),
+     a => a+1000,
+     log); // [object Promise]1000  -> 비정상적인 값 출력.
+  // go함수를 이루는 reduce를 수정할 생각을한다.
+  
+// reduce함수 수정.
+// const reduce = curry((f, acc, iter) => {
+//   if (!iter) {
+//     iter = acc[Symbol.iterator]();
+//     acc = iter.next().value;
+//   } else {
+//     iter = iter[Symbol.iterator]();
+//   }
+  //수정
+//    let cur;
+//     while (!(cur = iter.next()).done) {
+//       const a = cur.value;
+//       acc = acc instanceof Promise ? acc.then(acc => f(acc,a)) : f(acc,a);  
+
+// });
+// -> 문제점 : Promise가 발생하면 발생한 이후 Promise체인이 발생하여 연속적으로 비동기가 발생하게된다.  -> 성능저하발생. -> 재귀함수를 사용하여 필요할떄만 처리해준다.
+  
+ 
+// const reduce = curry((f, acc, iter) => {
+//   if (!iter) {
+//     iter = acc[Symbol.iterator]();
+//     acc = iter.next().value;
+//   } else {
+//     iter = iter[Symbol.iterator]();
+//   }
+  //수정 (재귀함수 활용)
+// return function recur(acc) {
+//   let cur;
+//   while (!(cur = iter.next()).done) {
+//   const a = cur.value;
+//   acc = f(acc,a);
+//   if(acc instanceof Promise) return acc.then(recur);
+//  }
+//  return acc;
+// }(acc);
+// });
+// -> 문제점 : 첫번쨰 인자로 Promise를 받게되면 오류발생.  
+  
+
+    // Promise가 첫인자로 주어지면?
+  go(Promise.resolve(1),
+     a => a +10,
+     a => Promise.resolve(a+100),
+     a => a+1000,
+     log); //  -> 비정상적인 값 출력.
+ 
+// const go1 = (a, f) => a instanceof Promise ? a.then(f) : f(a);     // go1함수 생성
+  // reduce함수 수정.
+// const reduce = curry((f, acc, iter) => {
+//   if (!iter) {
+//     iter = acc[Symbol.iterator]();
+//     acc = iter.next().value;
+//   } else {
+//     iter = iter[Symbol.iterator]();
+//   }
+  //수정
+// return go1(acc, function recur(acc) { 
+//   let cur;
+//   while (!(cur = iter.next()).done) {
+//   const a = cur.value;
+//   acc = f(acc,a);
+//   if(acc instanceof Promise) return acc.then(recur);
+//  }
+//  return acc;
+// });
+
+// });
+  
+  
+  
+  
+  // 중간에 에러가 발생한다면?
+  // 이후 함수를 실행하지않고 바로 catch문으로 빠진다.
   go(
     Promise.resolve(1),
     (a) => a + 10,
@@ -12,4 +99,10 @@
     (a) => a + 10000,
     log
   ).catch((a) => console.log(a));
+  
+  
+  // 
 </script>
+
+
+
