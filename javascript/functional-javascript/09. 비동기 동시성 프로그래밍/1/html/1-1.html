@@ -131,14 +131,13 @@
     .then(g)
     .then(f) /*.then(r => log(r))*/;
 </script>
-
-## Kleisli Composition : 오류가있을 수 있는 상황에서의 함수 합성을 안전하게하는
-하나의 규칙.
+## promise : Kleisli Composition를 지원하는 도구.
+## Kleisli Composition : 오류가있을 수 있는 상황에서의 함수 합성을 안전하게하는 하나의 규칙.
 <script>
   // f . g
   // f(g(x)) = f(g(x))
-  // f(g(x)) = g(x)    g함수에서 오류가 발생했을떄, g함수를 태우고 f를태워도 g만태웠을떄와 동일한 결과를 보여주는것.
-
+  // f(g(x)) = g(x)    g함수에서 오류가 발생했을떄, g함수를 태우고 f를태워도 g만태웠을떄와 동일한 결과를 보여주는것. (catch문)
+ 
   var users = [
     { id: 1, name: "aa" },
     { id: 2, name: "bb" },
@@ -153,17 +152,44 @@
 
   // const fg = id => f(g(id));
 
+//     log(fg(2) == fg(2)) // true
+  
+  
+//   const r = fg(2);
+//   log(r);
+  
+//   //외부에의한 변화발생.
+//    users.pop();
+//    users.pop();
+  
+//   const r2 = fg(2);
+//   log(r2); // 오류가 발생한다.     -> 오류가 발생하지않게 하려면? : Kleisli Composition을 적용.
+  
+// 적용.
+  
+// const fg = id => Promise.resolve(id).then(g).then(f);
+  
+  
+// user.pop()
+// user.pop() 
+   
+// fg(2).then(log); -> 마찬가지로 오류발생. -> getUserById함수에서 or 조건 추가.
+
+// 적용후
+  
+// fg(2).then(log) // Promise {<rejected> : "없어요!"}; -> g만 실행했을떄와 동일한 결과값을 확인.
+  
+  // 에러발생 유도
+    users.pop();
+    users.pop();
+  
   const fg = (id) =>
     Promise.resolve(id)
       .then(g)
       .then(f)
-      .catch((a) => a);
+      .catch((a) => a); //reject로 처리.
 
-  fg(2).then(log);
+  fg(2).then(log); // 왜 then으로 처리?? 질문확인할것
 
-  setTimeout(function () {
-    users.pop();
-    users.pop();
-    fg(2).then(log);
-  }, 10);
+
 </script>
