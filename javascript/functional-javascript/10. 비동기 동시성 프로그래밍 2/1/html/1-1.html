@@ -3,14 +3,17 @@
 
 ## 비동기 상황에서 map,take 동작하려면?
 ## 지연 평가 + Promise - L.map, map, take
+### Promise를 처리하는 go1함수추가, take함수,reduce함수 수정
 <script>
 /* 
+
       // Promise를 순회한다면?
     go(
       [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
       L.map(a => a + 10),
       take(2),
       log);
+      
 
       // L.map의 보조함수에 Promise를 넣어도 정상적으로 동작.
    go(
@@ -45,45 +48,32 @@
 
 ## filter에서 비동기를 처리하려면 ?
 ## Kleisli Composition - L.filter, filter, nop, take
-## 함수에 전달되는과정에서 조건에 충족되지 않는 상황이 발생했을때, 다음인자로 건너 뛸 수 있게 해준다.
+## fliter함수에 전달되는과정에서 보조함수 조건에 충족되지 않는 상황이 발생했을때, 다음인자로 건너 뛸 수 있게 해준다.
 <script>
 
 go([1, 2, 3, 4, 5, 6],
     L.map(a => Promise.resolve(a * a)),
-        L.filter(a => { // 기존의 filter라면 Promise형태로 전달되어 빈배열을 만들다.
-          log(a);
-          return a%2;
-        })
-    // take(4),
-    /*log*/);
+    L.filter(a => a%2), // 기존의 filter라면 Promise형태로 전달되어 필터과정에서 에러발생.
+    take(4),
+    log);
 
-
-
+// filter함수를 수정함으로써 다양하게 조합이 가능해짐.
   go([1, 2, 3, 4, 5, 6],
     L.map(a => Promise.resolve(a * a)),
-    // L.map(a => a * a),
     filter(a => Promise.resolve(a % 2)),
-    // L.map(a => a * a),
-    /*L.map(a => {
-      log(a);
-      return a * a;
-    }),
-    L.map(a => {
-      log(a);
-      return a * a;
-    }),*/
-    // take(4),
-    /*log*/);
+    L.map(a => a * a),
+    take(4),
+    log);
 </script>
 
-## reduce에서 nop 지원
-
+## reduce에서 비동기처리 : nop 지원
 <script>
+  
   go([1, 2, 3, 4, 5],
     L.map(a => Promise.resolve(a * a)),
     L.filter(a => Promise.resolve(a % 2)),
-    reduce(add)/*,
-    log*/);
+    reduce(add),
+    log);
 </script>
 
 <script>
