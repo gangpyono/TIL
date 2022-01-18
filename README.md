@@ -77,4 +77,5 @@
 - [HTTP 기본](https://github.com/gangpyono/TIL/blob/main/network/HTTP.md)
 - [HTTP method](https://github.com/gangpyono/TIL/blob/main/network/HTTP%20method.md)
 - [HTTP method 활용](https://github.com/gangpyono/TIL/blob/main/network/HTTP%20method%20%ED%99%9C%EC%9A%A9.md)
-- [HTTP 헤더1](https://github.com/gangpyono/TIL/blob/main/network/HTTP%20Header1.md)
+- [HTTP 헤더1(일반)](https://github.com/gangpyono/TIL/blob/main/network/HTTP%20Header1.md)
+- [HTTP 헤더2(캐시와 조건부요청)](https://github.com/gangpyono/TIL/blob/main/network/HTTP%20Header2(%EC%BA%90%EC%8B%9C%20%EC%99%80%20%EC%A1%B0%EA%B1%B4%EB%B6%80%20%EC%9A%94%EC%B2%AD).md)
