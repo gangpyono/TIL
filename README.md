@@ -60,6 +60,8 @@
 ## Library
 - [fetch & axios](https://github.com/gangpyono/TIL/blob/main/react/DreamCoding_react/react/fetch%EC%99%80%20axios%EC%9D%98%20%EC%B0%A8%EC%9D%B4.md) 
 
+## Next.js
+- [what is next.js](https://github.com/gangpyono/TIL/blob/main/react/Framework/NEXT.js/what%20is%20NEXT.js.md)
 
 <br></br>
 <br></br>
