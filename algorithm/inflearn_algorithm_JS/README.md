@@ -31,3 +31,8 @@
 ## section 8
 
 - 재귀함수와 완전탐색(DFS : 깊이 우선탐색)
+
+
+## section 9
+
+- Dynamic programming(동적 계획법)
