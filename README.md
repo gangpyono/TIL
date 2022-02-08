@@ -87,4 +87,5 @@
 
 # GraphQL
 - [what is GraphQl](https://github.com/gangpyono/TIL/blob/main/graphql/what%20is%20graphql.md)
-- rest api -> graphql 전환
+- [Server - GraphQL](https://github.com/gangpyono/TIL/blob/main/graphql/Server-GraphQL.md)
+- Client - GraphQL
