@@ -24,5 +24,5 @@ yarn add graphql graphql-request graphql-tag
 
 ## 클라이언트에서 rest api -> graphql로 변경하면서 느낀점
 
-- 요청 URL이 하나로 통일된다.
-- 요청하고자하는 type에대해서 전체 데이터가아닌 필요한 데이터만 따로 정의후 요청을 보낼 수 있다.
+- 요청 URL이 하나로 통일된다. [예시코드](https://github.com/gangpyono/express_react-practice/blob/main/client/queryClient.js)
+- 요청하고자하는 type에대해서 전체 데이터가아닌 필요한 데이터만 따로 정의후 요청을 보낼 수 있다. [예시코드](https://github.com/gangpyono/express_react-practice/blob/main/client/graphql/messages.js)
