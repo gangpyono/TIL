@@ -10,12 +10,12 @@ yarn add graphql apollo-server apollo-server-express
 
 # schema 설정
 
-- schema란 서버와 클라이언트가 데이터를 주고받는 형식을 의미한다.
+- schema란 서버와 클라이언트가 데이터를 주고받는 형식을 의미한다. [예시코드](https://github.com/gangpyono/express_react-practice/blob/main/server/src/schema/message.js)
   - rest API의 api명세서를 작성하는것과 비슷한 느낌(?)
 
 # resolvers 설정
 
-- resolvers란 Query와 Mutation으로 구성되는, 실질적으로 데이터를 조작하는 역할을하는 resolver들의 집합이다.(express의 routes폴더 역할.)
+- resolvers란 Query와 Mutation으로 구성되는, 실질적으로 데이터를 조작하는 역할을하는 resolver들의 집합이다.(express의 routes폴더 역할.) [예시코드](https://github.com/gangpyono/express_react-practice/blob/main/server/src/resolvers/messages.js)
 
 # playGround
 
