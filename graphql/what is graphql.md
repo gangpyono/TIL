@@ -18,3 +18,13 @@
 ### 뮤테이션(mutation)
 
 - 데이터를 변조하는데 사용(CUD)
+
+
+## Apollo
+
+- GraphQL를 사용 할 수있는 환경.
+- ApolloServer 생성자 함수에 typeDefs,resolvers를 전달하여 Apollo서버 생성.
+  - typeDefs
+    - 데이터를 주고받는 형식 설정.
+    - gql(template literal tag)로 생성됨.
+  - resolvers : 데이터반환,DB접근에 해당하는 함수들의 집합. (express에서 routes폴더역할.)
