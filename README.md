@@ -92,4 +92,4 @@
 
 # webPack
 - [what is webpack](https://github.com/gangpyono/TIL/blob/main/javascript/webPack/what%20is%20webpack.md)
-- entry,output
+- [config](https://github.com/gangpyono/TIL/blob/main/javascript/webPack/config.md)
