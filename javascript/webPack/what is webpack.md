@@ -1,6 +1,7 @@
 # 웹팩
 
-- 웹팩이란, 모듈번들러.
+- 모듈번들러.
+- 모듈로 작성된 코드들을 하나의 번들로 만들어내는 도구.
 
 ## 모듈
 
@@ -22,16 +23,17 @@
 
   export { sum, substract, pi };
   ```
-<br></br>
-<br></br>
+
+  <br></br>
+  <br></br>
 
 ## 웹팩에서의 모듈
 
 - 위의 코드뿐만이아닌,애플리케이션을 구성하는 모든 자원을 모듈로 정의.
   - html,css,js,image,font 등의 파일들.
   - 이러한 파일 하나하나를 모두 모듈로 정의.
-<br></br>
-<br></br>
+    <br></br>
+    <br></br>
 
 ## 모듈 번들링
 
@@ -40,15 +42,15 @@
 - 리액트를 통해 cra로 초기 세팅을 하다 보니 웹 팩에 대한 별다른 설정을 직접 안 했어도 이러한 번들링 작업이 웹 팩에 의해 발생하고 있었다.
 - 이런 여러 파일을 하나의 파일로 병합 및 압축해 주는 동작을 모듈 번들링이라 하며, 이러한 작업을 해주는 장치를 모듈 번들러 라고 한다.
   <img width="573" alt="스크린샷 2022-02-14 오후 11 50 24" src="https://user-images.githubusercontent.com/58588011/153887435-6d5c7e29-2ee3-436e-905a-cf1ea3874b92.png">
-<br></br>
-<br></br>
+  <br></br>
+  <br></br>
 
 ## 웹팩의 장점
 
 ### 1) 브라우저별 HTTP 요청 횟수의 제약 충족
 
-- 브라우저별 지원하는  최대 요청횟수
-<img width="200" alt="스크린샷 2022-02-16 오전 12 13 01" src="https://user-images.githubusercontent.com/58588011/154090823-3c264a36-b1f3-4f21-95d6-ab139bcb997a.png">
+- 브라우저별 지원하는 최대 요청횟수
+  <img width="200" alt="스크린샷 2022-02-16 오전 12 13 01" src="https://user-images.githubusercontent.com/58588011/154090823-3c264a36-b1f3-4f21-95d6-ab139bcb997a.png">
 
 - 웹팩에 의한 모듈 번들링을 통해 HTTP 요청 횟수를 줄일 수 있게 되어 서버 요청을 최소화 할 수 있다.
 
@@ -60,7 +62,7 @@
 
 ### 2) 웹 개발 자동화 도구 지원
 
-- HTML,CSS,JS압축
+- HTML,CSS,JS압축 (html-webpack-plugin,optimize-css-assets-webpack-plugin,terser-webpack-plugin)
 - 이미지 압축
 - CSS전처리기 변환
 
