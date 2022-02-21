@@ -67,10 +67,10 @@
 ## Next.js
 
 - [what is next.js](https://github.com/gangpyono/TIL/blob/main/react/Framework/NEXT.js/what%20is%20NEXT.js.md)
-- Navigate Between Pages
-
-<br></br>
-<br></br>
+- [Navigate Between Pages](https://github.com/gangpyono/TIL/blob/main/react/Framework/NEXT.js/Navigate%20Between%20Pages.md)
+- Assets,Metadata, and CSS
+  <br></br>
+  <br></br>
 
 # algorithm
 
