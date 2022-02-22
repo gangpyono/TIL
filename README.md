@@ -68,7 +68,9 @@
 
 - [what is next.js](https://github.com/gangpyono/TIL/blob/main/react/Framework/NEXT.js/what%20is%20NEXT.js.md)
 - [Navigate Between Pages](https://github.com/gangpyono/TIL/blob/main/react/Framework/NEXT.js/Navigate%20Between%20Pages.md)
-- Assets,Metadata, and CSS
+- [Assets,Metadata, and CSS](https://github.com/gangpyono/TIL/blob/main/react/Framework/NEXT.js/Assets%2CMetadata%2Cand%20CSS.md)
+- [pre-rendering and Data Fetching](https://github.com/gangpyono/TIL/blob/main/react/Framework/NEXT.js/pre-rendering%20and%20Data%20Fetching.md)
+- Dynamic Routes
   <br></br>
   <br></br>
 
