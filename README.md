@@ -71,7 +71,7 @@
 - [Assets,Metadata, and CSS](https://github.com/gangpyono/TIL/blob/main/react/Framework/NEXT.js/Assets%2CMetadata%2Cand%20CSS.md)
 - [pre-rendering and Data Fetching](https://github.com/gangpyono/TIL/blob/main/react/Framework/NEXT.js/pre-rendering%20and%20Data%20Fetching.md)
 - [Dynamic Routes](https://github.com/gangpyono/TIL/blob/main/react/Framework/NEXT.js/Dynamic%20Routes.md)
-- API Routes
+- [API Routes](https://github.com/gangpyono/TIL/blob/main/react/Framework/NEXT.js/API%20Routes.md)
 
   <br></br>
   <br></br>
