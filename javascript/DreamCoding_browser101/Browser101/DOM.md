@@ -20,6 +20,7 @@
 
    <img width="700" alt="event target APIs" src="https://user-images.githubusercontent.com/58588011/117319478-4cca0e00-aec6-11eb-9611-28c44e1c742a.png">
  
-
+ ## 참고자료
+ https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model/Introduction
  
  
