@@ -3,6 +3,7 @@
 - 다른 대부분의 객체지향 언어에서 this는 클래스로 생성한 인스턴스 객체를 의미.
 - 그러나 자바스크립트에서 this는 상황에따라 가리키는 대상이 달라진다.
 - 함수와 객체의 구분이 에매한 자바스크립트에서 this는 이둘을 구분하는 유일한 수단이 된다.
+- this는 실행컨텍스트 생성시 바인딩된다.
 
 ## 1. this는 상황에따라 달라진다.
 
@@ -183,7 +184,7 @@ obj.method.apply({ a: 4 }, [5, 6]); // 4 5 6
 
 ### 2.2 bind메서드는 this지정 및 함수에 넘길 인수를 일부 지정해서 새로운 함수를 만든다.
 
-- 마찬가지로 call과 비슷하지만 즉시 호출하지는않고 넘겨받은 값들을 바탕으로 새로운 함수를 반환하기만 하는 메서드.
+- 마찬가지로 call과 비슷하지만 즉시 호출하지는않고 넘겨받은 값들을 바탕으로 **새로운 함수**를 반환하기만 하는 메서드.
 
 ```js
 var func = function (a, b, c, d) {
@@ -192,12 +193,94 @@ var func = function (a, b, c, d) {
 
 func(1, 2, 3, 4); // Window{ ... } 1 2 3 4
 
-var bindFunc1 = func.bind({ x: 1 });
+var bindFunc1 = func.bind({ x: 1 }); // 1. 새로운 함수 생성.
 bindFunc1(5, 6, 7, 8); // { x: 1 } 5 6 7 8
 
-var bindFunc2 = func.bind({ x: 1 }, 4, 5);
+var bindFunc2 = func.bind({ x: 1 }, 4, 5); // 2. 부분적용 구현.
 bindFunc2(6, 7); // { x: 1 } 4 5 6 7
 bindFunc2(8, 9); // { x: 1 } 4 5 8 9
+```
+
+### 2.3 name 프로퍼티
+
+- bind메서드를 활용해서 만든 함수엔 name 프로퍼티가 자동으로 설정된다.
+- 이 name 프로퍼티를통해 어떤 함수로부터 바인드 되었는지 확인할 수 있어 call/apply보다 코드 추적이 수월해진다.
+
+```js
+var func = function (a, b, c, d) {
+  console.log(this, a, b, c, d);
+};
+var bindFunc = func.bind({ x: 1 }, 4, 5);
+console.log(func.name); // func
+console.log(bindFunc.name); // bound func
+```
+
+### 2.4 상위 컨텍스트의 this를 내부함수나 콜백함수에 전달하기
+
+- 내부함수에 전달하기 1. call
+
+```js
+var obj = {
+  outer: function () {
+    console.log(this); // 1. obj
+    var innerFunc = function () {
+      console.log(this); // 3. obj (call을 적용하지않았다면, window가 출력된다.)
+    };
+    innerFunc.call(this); // 2. this에 obj전달
+  },
+};
+obj.outer(); // 실행
+```
+
+- 내부함수에 전달하기 2. bind
+
+```js
+var obj = {
+  outer: function () {
+    console.log(this); // 1. obj
+    var innerFunc = function () {
+      console.log(this); // 4. obj  (bind를 적용하지않았다면, window가 출력된다.)
+    }.bind(this); // 2. obj를 바인딩한 함수 생성.
+    innerFunc(); // 3. 실행
+  },
+};
+obj.outer(); // 실행
+```
+
+<!-- - 콜백 함수에 전달하기
+
+```js
+var obj = {
+  logThis: function () {
+    console.log(this); //2. obj..?
+  },
+  logThisLater1: function () {
+    setTimeout(this.logThis, 500); //1. obj.logThis 함수를 콜백함수로 전달.
+  },
+  logThisLater2: function () {
+    setTimeout(this.logThis.bind(this), 1000);  // 1. obj.logThis에 this를 bind시킨 함수를 콜백함수로 전달.
+  },
+};
+obj.logThisLater1(); // Window { ... }
+obj.logThisLater2(); // obj { logThis: f, ... }
+``` -->
+
+### 2.4 화살표 함수의 예외사항.
+
+- 실행컨텍스트 생성 시 this를 바인딩하는 과정이 제외된다.
+- 즉 이 함수 내부에는 this자체가 아예 없으며, 접근을 하게될시 스코프체인상 가장 가까운 **this**에 접근하게된다.(상위스코프가아닌 상위스코프에 바인딩된 this)
+
+```js
+var obj = {
+  outer: function () {
+    console.log(this); // obj
+    var innerFunc = () => {
+      console.log(this); // obj
+    };
+    innerFunc();
+  },
+};
+obj.outer(); // 실행
 ```
 
 ### 2.3 요소를 순회하면서 콜백 함수를 반복 호출하는 내용의 일부 메서드는 별도의 인자로 this를 받기도 한다.
@@ -211,7 +294,7 @@ var report = {
     args.forEach(function (entry) {
       this.sum += entry;
       ++this.count;
-    }, this); // 별도의 인자로 this를 받는다. (report 바라봄)
+    }, this); // 별도의 인자로 this를 받는다. (지금상태에선 report 바라봄)
   },
   average: function () {
     return this.sum / this.count;
