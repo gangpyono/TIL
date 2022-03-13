@@ -1,6 +1,6 @@
 {
   // enum : 관련있는 여러 상수값들을 하나로 묶어서 정의.
-
+  // 타입스크립트에선 union types로 대체가능하다.
   // JavaScript
   const MAX_NUM = 6;
   const MAX_STUDENTS_PER_CLASS = 10;
