@@ -1,6 +1,6 @@
 {
   // encapsulation
-  // 클래스를 만들떄, 외부에서의 접근이 허용된것은 무엇이고, 내부적으로만 허용된것은 무엇인지를 설정할 수 있다.
+  // 클래스를 만들떄, 외부에서의 접근을 허용하는것과 내부적으로만 허용하는것을 구분.
   type CoffeeCup = {
     shots: number;
     hasMilk: boolean;
@@ -10,9 +10,6 @@
   // private  -> 직접 접근 불가.
   // protedcted -> 상속된 자식 class에서만 접근 가능.
   class CoffeeMaker {
-    // 클래스자체에서 정의된 값. -> 변하지않는다.
-    // 인스턴스를 생성할떄마다 만들어진다 -> 메모리 발생.
-    // static 키워드를통해 class level로 제한 할 수 있다.
     private static BEANS_GRAMM_PER_SHOT: number = 7; // class level
     private coffeeBeans: number = 0; // instance level
 
@@ -23,7 +20,7 @@
 
     static makeMachine(cofeeBeans: number): CoffeeMaker {
       // static 키워드를 사용하면 생성자로접근해야한다.
-      // 클래스의 내부 함수로 인스턴스를 생성하는 구조인 클래스라면, 생성자를 통해 인스턴스를 생성하는것을 제한시킨다.
+      // 클래스의 내부 함수(여기선 makeMachine)로 인스턴스를 생성하는 구조인 클래스라면, 생성자를 통해 인스턴스를 생성하는것을 제한시킨다.
       // 따라서 constructor를 private로 설정한다.
       return new CoffeeMaker(cofeeBeans);
     }
