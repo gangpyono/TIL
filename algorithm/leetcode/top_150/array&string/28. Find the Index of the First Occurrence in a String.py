@@ -13,3 +13,15 @@ class Solution:
 
 
 print(Solution().strStr("sadbutsad", "sad"))
+
+
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+
+        try:
+            haystack.index(needle)
+        except:
+            return -1
+
+
+print(Solution().strStr("sadbutsad", "sad"))
