@@ -44,11 +44,8 @@ class Solution:
         n = len(citations)
         paper_counts = [0 for _ in range(len(citations) + 1)]
 
-        for i in range(len(citations)):
-            if citations[i] > len(citations):
-                paper_counts[-1] += 1
-            else:
-                paper_counts[citations[i]] += 1
+        for i in range(n):
+            paper_counts[min(n, citations[i])] += 1
 
         h = n
         papers = paper_counts[n]
@@ -60,4 +57,4 @@ class Solution:
         return h
 
 
-print(Solution().hIndex1([3, 0, 6, 1, 5]))
+print(Solution().hIndex3([3, 0, 6, 1, 5]))
