@@ -40,6 +40,15 @@ class Solution:
 
         return isSame(p, q)
 
+    def isSameTree3(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        if not p and not q:
+            return True
+
+        if (p and not q) or (not p and q) or (p.val != q.val):
+            return False
+
+        return self.isSameTree3(p.left, q.left) and self.isSameTree3(p.right, q.right)
+
 
 p = TreeNode(1)
 p.left = TreeNode(2)
@@ -52,3 +61,4 @@ q.right = TreeNode(3)
 
 print(Solution().isSameTree1(p, q))
 print(Solution().isSameTree2(p, q))
+print(Solution().isSameTree3(p, q))
