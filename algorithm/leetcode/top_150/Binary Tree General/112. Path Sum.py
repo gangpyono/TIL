@@ -12,16 +12,16 @@ class TreeNode:
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
 
-        def DFS(root, cur_sum):
+        def DFS(root, curSum):
             if not root:
                 return False
 
-            cur_sum += root.val
+            curSum += root.val
 
             if not root.left and not root.right:
-                return cur_sum == targetSum
+                return curSum == targetSum
 
-            return DFS(root.left, cur_sum) or DFS(root.right, cur_sum)
+            return DFS(root.left, curSum) or DFS(root.right, curSum)
 
         return DFS(root, 0)
 
