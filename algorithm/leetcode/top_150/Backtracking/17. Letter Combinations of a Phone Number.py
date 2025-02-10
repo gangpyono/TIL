@@ -30,5 +30,34 @@ class Solution:
 
         return result
 
+    def letterCombinations2(self, digits: str) -> List[str]:
+        dic = {
+            "2": "abc",
+            "3": "def",
+            "4": "ghi",
+            "5": "jkl",
+            "6": "mno",
+            "7": "pqrs",
+            "8": "tuv",
+            "9": "wxyz",
+        }
+
+        n = len(digits)
+        temp = [""] * n
+        ans = []
+
+        def dfs(L):
+            if L == n:
+                ans.append("".join(temp[:]))
+            else:
+                for i in dic[digits[L]]:
+                    temp[L] = i
+                    dfs(L + 1)
+
+        if len(digits) != 0:
+            dfs(0)
+
+        return ans
+
 
 print(Solution().letterCombinations("23"))
